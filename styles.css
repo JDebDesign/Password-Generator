@@ -1,0 +1,453 @@
+/* ── Theme tokens ── */
+:root {
+  --body-bg:          #111827;
+  --card-bg:          #1f2937;
+  --heading-primary:  #ffffff;
+  --heading-accent:   #4adf86;
+  --text-secondary:   #d5d4d8;
+  --control-label:    #d5d4d8;
+  --slider-track:     #374151;
+  --slider-border:    #1f2937;  /* thumb border matches card */
+  --input-bg:         #273549;
+  --input-border:     #374151;
+  --input-value:      #55f991;
+  --toggle-off:       #374151;
+  --divider:          rgba(255, 255, 255, 0.08);
+  --pw-box-bg:        #273549;
+  --pw-box-hover:     #2e3f57;
+  --pw-text:          #55f991;
+  --pw-flash-bg:      rgba(16, 185, 129, 0.18);
+  --theme-btn-bg:     #374151;
+  --theme-btn-color:  #ffffff;
+  --theme-btn-hover:  #4b5563;
+}
+
+[data-theme="light"] {
+  --body-bg:          #ecfdf5;
+  --card-bg:          #ecfdf5;
+  --heading-primary:  #2b283a;
+  --heading-accent:   #10b981;
+  --text-secondary:   #6b7280;
+  --control-label:    #6b7280;
+  --slider-track:     #a7f3d0;
+  --slider-border:    #ecfdf5;  /* thumb border matches card */
+  --input-bg:         #d1fae5;
+  --input-border:     #6ee7b7;
+  --input-value:      #059669;
+  --toggle-off:       #cbd5e1;
+  --divider:          rgba(0, 0, 0, 0.1);
+  --pw-box-bg:        #273549;  /* intentionally stays dark per Figma */
+  --pw-box-hover:     #2e3f57;
+  --pw-text:          #5def92;
+  --pw-flash-bg:      rgba(16, 185, 129, 0.25);
+  --theme-btn-bg:     #2b283a;
+  --theme-btn-color:  #ffffff;
+  --theme-btn-hover:  #3d3a52;
+}
+
+/* ── Reset ── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px 88px; /* bottom clears theme toggle */
+  background: var(--body-bg);
+  font-family: 'Inter', sans-serif;
+  transition: background 0.25s ease;
+  overflow-x: hidden;
+}
+
+/* ── Card ── */
+.card {
+  width: 100%;
+  max-width: 550px;
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 40px 24px 36px;
+  display: flex;
+  flex-direction: column;
+  transition: background 0.25s ease;
+}
+
+@media (min-width: 480px) {
+  .card { padding: 60px 40px 44px; }
+}
+
+@media (min-width: 600px) {
+  body  { padding: 32px 24px 88px; }
+  .card { padding: 80px 52px 52px; }
+}
+
+/* ── Heading ── */
+.heading {
+  font-family: 'Karla', sans-serif;
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 34px;
+  letter-spacing: -0.5px;
+  color: var(--heading-primary);
+  margin-bottom: 14px;
+  transition: color 0.25s ease;
+}
+
+@media (min-width: 480px) {
+  .heading { font-size: 36px; line-height: 38px; letter-spacing: -1px; margin-bottom: 18px; }
+}
+
+@media (min-width: 600px) {
+  .heading { font-size: 40px; line-height: 40px; margin-bottom: 20px; }
+}
+
+.heading .accent {
+  color: var(--heading-accent);
+  transition: color 0.25s ease;
+}
+
+/* ── Supporting text ── */
+.supporting-text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-secondary);
+  margin-bottom: 22px;
+  transition: color 0.25s ease;
+}
+
+@media (min-width: 600px) {
+  .supporting-text { font-size: 20px; line-height: 28px; margin-bottom: 28px; }
+}
+
+/* ── Controls ── */
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+@media (min-width: 600px) {
+  .controls { margin-bottom: 28px; }
+}
+
+.control-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.control-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--control-label);
+  white-space: nowrap;
+  transition: color 0.25s ease;
+}
+
+/* Length slider */
+.length-control {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+#lengthValue {
+  width: 52px;
+  height: 32px; /* taller touch target */
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--input-value);
+  text-align: center;
+  outline: none;
+  flex-shrink: 0;
+  -moz-appearance: textfield;
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+#lengthValue::-webkit-outer-spin-button,
+#lengthValue::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+#lengthValue:focus {
+  border-color: #10b981;
+}
+
+input[type="range"] {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--slider-track);
+  outline: none;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;  /* larger for touch */
+  height: 22px;
+  border-radius: 50%;
+  background: #10b981;
+  cursor: pointer;
+  border: 3px solid var(--slider-border);
+  box-shadow: 0 0 0 2px #10b981;
+  transition: border-color 0.25s ease;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #10b981;
+  cursor: pointer;
+  border: 3px solid var(--slider-border);
+  box-shadow: 0 0 0 2px #10b981;
+}
+
+@media (min-width: 600px) {
+  input[type="range"] { padding: 0; }
+  input[type="range"]::-webkit-slider-thumb { width: 16px; height: 16px; border-width: 2px; }
+  input[type="range"]::-moz-range-thumb     { width: 16px; height: 16px; border-width: 2px; }
+}
+
+/* Toggle switch */
+.toggle {
+  position: relative;
+  width: 44px;  /* wider touch target */
+  height: 26px;
+  flex-shrink: 0;
+}
+
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.toggle-track {
+  position: absolute;
+  inset: 3px 4px; /* centre the visual track */
+  background: var(--toggle-off);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.toggle-thumb {
+  position: absolute;
+  top: 6px;
+  left: 7px;
+  width: 14px;
+  height: 14px;
+  background: #ffffff;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+  pointer-events: none;
+}
+
+.toggle input:checked + .toggle-track {
+  background: #10b981;
+}
+
+.toggle input:checked ~ .toggle-thumb {
+  transform: translateX(16px);
+}
+
+/* ── Generate button ── */
+.btn-generate {
+  align-self: stretch; /* full-width on mobile */
+  height: 46px;
+  padding: 11px 17px;
+  background: #10b981;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  white-space: nowrap;
+  transition: background 0.15s ease;
+  margin-bottom: 28px;
+}
+
+@media (min-width: 480px) {
+  .btn-generate { align-self: flex-start; height: 42px; padding: 9px 17px 9px 15px; }
+}
+
+@media (min-width: 600px) {
+  .btn-generate { margin-bottom: 32px; }
+}
+
+.btn-generate:hover  { background: #0ea572; }
+.btn-generate:active { background: #059669; }
+
+/* ── Divider ── */
+.divider {
+  height: 1px;
+  background: var(--divider);
+  margin-bottom: 20px;
+  transition: background 0.25s ease;
+}
+
+@media (min-width: 600px) {
+  .divider { margin-bottom: 24px; }
+}
+
+/* ── Password boxes ── */
+.password-row {
+  display: flex;
+  flex-direction: column; /* stack on mobile */
+  gap: 12px;
+}
+
+@media (min-width: 420px) {
+  .password-row { flex-direction: row; gap: 16px; }
+}
+
+@media (min-width: 600px) {
+  .password-row { gap: 24px; }
+}
+
+.password-box {
+  flex: 1;
+  min-width: 0; /* allow flex item to shrink below content size */
+  overflow: hidden;
+  min-height: 44px;
+  padding: 10px 10px;
+  background: var(--pw-box-bg);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+  transition: background 0.15s ease;
+  position: relative;
+}
+
+.password-box.has-password {
+  cursor: pointer;
+}
+
+.password-box.has-password:hover {
+  background: var(--pw-box-hover);
+}
+
+.password-text {
+  font-weight: 500;
+  font-size: clamp(11px, 2.8vw, 13px);
+  line-height: 1;
+  color: var(--pw-text);
+  text-align: center;
+  padding: 0 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  user-select: none;
+  transition: color 0.25s ease, opacity 0.15s ease;
+}
+
+/* When stacked (mobile), the box is full-width so longer passwords fit comfortably */
+@media (max-width: 419px) {
+  .password-text { font-size: 13px; }
+}
+
+.copy-flash {
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+  background: var(--pw-flash-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+
+.copy-flash span {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--pw-text);
+  letter-spacing: 0.02em;
+}
+
+.password-box.copied .copy-flash {
+  opacity: 1;
+}
+
+.password-box.copied .password-text {
+  opacity: 0;
+}
+
+/* ── Theme toggle button ── */
+.theme-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: var(--theme-btn-bg);
+  color: var(--theme-btn-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  transition: background 0.25s ease, box-shadow 0.15s ease, transform 0.1s ease;
+  z-index: 100;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (min-width: 600px) {
+  .theme-toggle { bottom: 24px; right: 24px; width: 44px; height: 44px; }
+}
+
+.theme-toggle:hover {
+  background: var(--theme-btn-hover);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.theme-toggle:active {
+  transform: scale(0.92);
+}
+
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+@media (min-width: 600px) {
+  .theme-toggle svg { width: 20px; height: 20px; }
+}
+
+/* Show sun in dark mode, moon in light mode */
+.icon-sun  { display: block; }
+.icon-moon { display: none; }
+
+[data-theme="light"] .icon-sun  { display: none; }
+[data-theme="light"] .icon-moon { display: block; }
