@@ -1,20 +1,41 @@
-import { useRef } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Controls({ length, useNumbers, useSymbols, onLengthChange, onNumbersChange, onSymbolsChange }) {
-  const sliderRef = useRef(null);
+  // Local display value lets the user type freely; we only validate on blur/Enter.
+  const [inputVal, setInputVal] = useState(String(length));
+
+  // Keep display in sync when the slider changes the parent's length.
+  useEffect(() => {
+    setInputVal(String(length));
+  }, [length]);
 
   function handleSlider(e) {
     onLengthChange(parseInt(e.target.value, 10));
   }
 
-  function handleInput(e) {
-    const val = Math.min(32, Math.max(8, parseInt(e.target.value, 10) || 8));
-    onLengthChange(val);
+  function commitInput(raw) {
+    const parsed = parseInt(raw, 10);
+    const clamped = Number.isNaN(parsed) ? 8 : Math.min(32, Math.max(8, parsed));
+    setInputVal(String(clamped));
+    onLengthChange(clamped);
+  }
+
+  function handleInputChange(e) {
+    setInputVal(e.target.value); // let the user type freely
   }
 
   function handleBlur(e) {
-    const val = Math.min(32, Math.max(8, parseInt(e.target.value, 10) || 8));
-    onLengthChange(val);
+    commitInput(e.target.value);
+  }
+
+  function handleKeyDown(e) {
+    // Block anything that isn't a digit, navigation, or editing key
+    const allowed = ['Backspace','Delete','ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Tab','Enter','Home','End'];
+    if (!allowed.includes(e.key) && !/^\d$/.test(e.key)) {
+      e.preventDefault();
+      return;
+    }
+    if (e.key === 'Enter') commitInput(e.target.value);
   }
 
   return (
@@ -24,7 +45,6 @@ export default function Controls({ length, useNumbers, useSymbols, onLengthChang
         <div className="length-control">
           <input
             type="range"
-            ref={sliderRef}
             min="8"
             max="32"
             value={length}
@@ -33,11 +53,12 @@ export default function Controls({ length, useNumbers, useSymbols, onLengthChang
           <input
             type="number"
             className="length-value-input"
-            value={length}
+            value={inputVal}
             min="8"
             max="32"
-            onChange={handleInput}
+            onChange={handleInputChange}
             onBlur={handleBlur}
+            onKeyDown={handleKeyDown}
           />
         </div>
       </div>
