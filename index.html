@@ -7,70 +7,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Karla:wght@800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="card">
-    <p class="heading">
-      Generate a <br>
-      <span class="accent">random password</span>
-    </p>
-
-    <p class="supporting-text">Never use an insecure password again.</p>
-
-    <div class="controls">
-      <div class="control-row">
-        <span class="control-label">Length</span>
-        <div class="length-control">
-          <input type="range" id="lengthSlider" min="8" max="32" value="15">
-          <input type="number" id="lengthValue" value="15" min="8" max="32">
-        </div>
-      </div>
-
-      <div class="control-row">
-        <span class="control-label">Numbers</span>
-        <label class="toggle">
-          <input type="checkbox" id="toggleNumbers" checked>
-          <div class="toggle-track"></div>
-          <div class="toggle-thumb"></div>
-        </label>
-      </div>
-
-      <div class="control-row">
-        <span class="control-label">Symbols</span>
-        <label class="toggle">
-          <input type="checkbox" id="toggleSymbols" checked>
-          <div class="toggle-track"></div>
-          <div class="toggle-thumb"></div>
-        </label>
-      </div>
-    </div>
-
-    <button class="btn-generate" id="btnGenerate">Generate passwords</button>
-
-    <div class="divider"></div>
-
-    <div class="password-row">
-      <div class="password-box" id="box1">
-        <span class="password-text" id="pw1"></span>
-        <div class="copy-flash"><span>✓ Copied</span></div>
-      </div>
-      <div class="password-box" id="box2">
-        <span class="password-text" id="pw2"></span>
-        <div class="copy-flash"><span>✓ Copied</span></div>
-      </div>
-    </div>
-  </div>
-
-  <button class="theme-toggle" id="themeToggle" aria-label="Toggle colour theme">
-    <svg class="icon-sun" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0-13a1 1 0 0 0 1-1V2a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm0 16a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Zm9-9h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2ZM4 12a1 1 0 0 0-1-1H2a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm14.95-6.364-.707-.707a1 1 0 0 0-1.414 1.414l.707.707a1 1 0 0 0 1.414-1.414ZM6.757 17.657l-.707.707a1 1 0 0 0 1.414 1.414l.707-.707a1 1 0 0 0-1.414-1.414Zm12.02 1.414-.707-.707a1 1 0 0 0-1.414 1.414l.707.707a1 1 0 0 0 1.414-1.414ZM6.757 6.343 6.05 5.636A1 1 0 0 0 4.636 7.05l.707.707a1 1 0 0 0 1.414-1.414Z"/>
-    </svg>
-    <svg class="icon-moon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M21.53 15.57a9.004 9.004 0 0 1-9.1-9.1 9.003 9.003 0 0 1 1.06-4.18 1 1 0 0 0-1.27-1.37A10 10 0 1 0 20.1 18.74a1 1 0 0 0 1.43-1.17Z"/>
-    </svg>
-  </button>
-
-  <script src="script.js"></script>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>

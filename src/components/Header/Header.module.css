@@ -1,0 +1,60 @@
+.header {
+  width: 100%;
+  max-width: 550px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 0 12px;
+}
+
+.authBtn {
+  height: 34px;
+  padding: 0 14px;
+  background: var(--header-btn-bg);
+  border: none;
+  border-radius: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--header-btn-color);
+  cursor: pointer;
+  transition: background 0.15s ease;
+  white-space: nowrap;
+}
+
+.authBtn:hover { background: var(--header-btn-hover); }
+
+.userRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.email {
+  font-size: 13px;
+  color: var(--header-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px;
+}
+
+.signOutBtn {
+  height: 34px;
+  padding: 0 14px;
+  background: transparent;
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--header-text);
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+}
+
+.signOutBtn:hover {
+  border-color: var(--text-secondary);
+  color: var(--heading-primary);
+}
