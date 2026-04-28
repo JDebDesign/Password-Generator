@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useAuth } from './hooks/useAuth.js';
 import { usePassbook } from './hooks/usePassbook.js';
 import Header from './components/Header/Header.jsx';
+import Banner from './components/Banner/Banner.jsx';
 import PasswordCard from './components/PasswordCard/PasswordCard.jsx';
 import Passbook from './components/Passbook/Passbook.jsx';
 import AuthModal from './components/AuthModal/AuthModal.jsx';
@@ -36,6 +37,8 @@ export default function App() {
         onOpenAuth={tab => setAuthModal(tab)}
         onSignOut={signOut}
       />
+
+      {!session && <Banner onOpenAuth={tab => setAuthModal(tab)} />}
 
       <PasswordCard
         isAuthenticated={!!session}
