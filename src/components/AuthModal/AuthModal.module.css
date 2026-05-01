@@ -21,10 +21,10 @@
 
 .closeBtn {
   position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 32px;
-  height: 32px;
+  top: 10px;
+  right: 10px;
+  width: 44px;
+  height: 44px;
   border: none;
   background: transparent;
   color: var(--text-secondary);
@@ -93,12 +93,12 @@
 }
 
 .input {
-  height: 40px;
+  height: 44px;
   background: var(--input-bg);
   border: 1px solid var(--input-border);
   border-radius: 6px;
   font-family: 'Inter', sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   color: var(--heading-primary);
   padding: 0 12px;
   outline: none;
@@ -115,7 +115,7 @@
 }
 
 .submitBtn {
-  height: 42px;
+  height: 44px;
   background: #10b981;
   border: none;
   border-radius: 6px;

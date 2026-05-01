@@ -28,10 +28,10 @@
 
 .closeBtn {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 22px;
-  height: 22px;
+  top: 2px;
+  right: 2px;
+  width: 44px;
+  height: 44px;
   border: none;
   background: transparent;
   color: var(--text-secondary);
@@ -44,6 +44,7 @@
   line-height: 1;
   padding: 0;
   transition: color 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .closeBtn:hover { color: var(--heading-primary); }

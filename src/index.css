@@ -84,6 +84,10 @@
   box-sizing: border-box;
 }
 
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
   min-height: 100dvh;
   display: flex;
@@ -194,12 +198,12 @@ body {
 
 .length-value-input {
   width: 52px;
-  height: 32px;
+  height: 36px;
   background: var(--input-bg);
   border: 1px solid var(--input-border);
   border-radius: 6px;
   font-family: 'Inter', sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--input-value);
   text-align: center;
@@ -263,8 +267,11 @@ input[type="range"]::-moz-range-thumb {
 .toggle {
   position: relative;
   width: 44px;
-  height: 26px;
+  height: 44px;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .toggle input {
@@ -276,7 +283,7 @@ input[type="range"]::-moz-range-thumb {
 
 .toggle-track {
   position: absolute;
-  inset: 3px 4px;
+  inset: calc(50% - 10px) 4px;
   background: var(--toggle-off);
   border-radius: 10px;
   cursor: pointer;
@@ -285,7 +292,7 @@ input[type="range"]::-moz-range-thumb {
 
 .toggle-thumb {
   position: absolute;
-  top: 6px;
+  top: calc(50% - 7px);
   left: 7px;
   width: 14px;
   height: 14px;
@@ -485,10 +492,10 @@ input[type="range"]::-moz-range-thumb {
 /* ── Save button (inside password box) ── */
 .save-btn {
   position: absolute;
-  top: 5px;
-  right: 5px;
-  width: 22px;
-  height: 22px;
+  top: 0;
+  right: 0;
+  width: 44px;
+  height: 44px;
   border: none;
   background: transparent;
   color: var(--pw-text);
@@ -497,8 +504,6 @@ input[type="range"]::-moz-range-thumb {
   align-items: center;
   justify-content: center;
   border-radius: 4px;
-  font-size: 11px;
-  font-weight: 700;
   opacity: 0.55;
   transition: opacity 0.15s ease;
   padding: 0;
@@ -507,6 +512,6 @@ input[type="range"]::-moz-range-thumb {
 .save-btn:hover { opacity: 1; }
 
 .save-btn svg {
-  width: 13px;
-  height: 13px;
+  width: 14px;
+  height: 14px;
 }
